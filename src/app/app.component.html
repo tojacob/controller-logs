@@ -1,20 +1,28 @@
 <section class="container">
-  <div class="log-filter">
+  <div
+    [formGroup]="queryForm"
+    class="log-filter">
     <label for="logFilter">
       Downtime seconds filter (>=)
     </label>
     <input
-      [ngModel]="downtimeFilterValue"
-      (ngModelChange)="onDowntimeFilterChange($event)"
+      formControlName="time"
       id="logFilter"
       name="logFilter"
       type="number">
     <select
-      [ngModel]="downtimeTypeFilterValue"
-      (ngModelChange)="onDowntimeTypeFilterChange($event)"
-      name="time-type">
+      formControlName="mode"
+      name="time-mode">
       <option value="second">second</option>
       <option value="minute">minute</option>
+    </select>
+    <br>
+    <select
+      formControlName="type"
+      name="time-type">
+      <option value="all">All</option>
+      <option value="small">Small</option>
+      <option value="medium">Medium</option>
     </select>
   </div>
   <div *ngIf="loading" class="loading">Loading...</div>
@@ -23,11 +31,13 @@
       <th>Disconnection</th>
       <th>Reconnection</th>
       <th>Downtime</th>
+      <th>Type</th>
     </tr>
     <tr *ngFor="let log of logsData;">
       <td>{{log.startTime | date:"dd-MM-YYYY HH:mm:ss"}}</td>
       <td>{{log.endTime | date:"dd-MM-YYYY HH:mm:ss"}}</td>
       <td>{{log.totalTime.m}}m {{log.totalTime.s}}s</td>
+      <td>{{log.type}}</td>
     </tr>
   </table>
 </section>
