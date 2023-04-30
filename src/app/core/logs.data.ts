@@ -1,6 +1,6 @@
 export enum LogType {
-  doorState = "small",
-  accessCode = "medium",
+  doorState = "medium",
+  accessCode = "small",
   all = "all"
 }
 
