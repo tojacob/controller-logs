@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NonNullableFormBuilder } from "@angular/forms";
 import { debounceTime, distinctUntilChanged, firstValueFrom, timer } from "rxjs";
 import { LogType, RawLogData, rawLogDateFormat, rawLogsData } from "./core/logs.data";
 import { dates } from "./core/date.utility";
-import { NonNullableFormBuilder } from "@angular/forms";
 
 enum QueryTimeMode {
   second = "second",
